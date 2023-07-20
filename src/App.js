@@ -1,13 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Navbar } from "./components/Navbar";
 import CharactersList from "./pages/CharactersList";
 
 function App() {
-    return (
-        <div className="App">
-            <CharactersList />
-        </div>
-    );
+  return (
+    <div className="App">
+      <Navbar />
+      <CharactersList />
+    </div>
+  );
 }
 
 export default App;
