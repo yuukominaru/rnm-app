@@ -1,11 +1,5 @@
-/* .CharacterList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-} */
-
-.card {
-  width: 18rem;
+.img-fluid {
+  width: 30rem;
 }
 
 /* .App {

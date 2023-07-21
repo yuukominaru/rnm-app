@@ -1,6 +1,10 @@
 import React from "react";
+import Spinner from "react-bootstrap/Spinner";
+import Container from "react-bootstrap/Container";
+import Row from 'react-bootstrap/Row';
 import { useCharacters } from "../hooks/useCharacters";
-import { Card } from "../components/Card";
+import { CardComp } from "../components/CardComp";
+import { Link } from "react-router-dom";
 
 export default function CharactersList() {
   const { error, loading, data } = useCharacters();
@@ -9,26 +13,32 @@ export default function CharactersList() {
 
   if (loading)
     return (
-      <div className="container">
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
+      <Container fluid>
+        <div class="position-absolute top-50 start-50 translate-middle">
+          <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
-          </div>
+          </Spinner>
         </div>
-      </div>
+      </Container>
     );
 
-  if (error) return <div>Something went wrong</div>;
+  if (error) return (
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <h1 className="text-danger">Error</h1>
+    </div>
+  );
 
   return (
-    <div className="CharacterList container justify-content-center">
-      <div className="row row-cols-4">
+    <Container className="CharacterList">
+      <Row xs="1" md="3" lg="4">
         {data.characters.results.map((character) => {
           return (
-            <Card character={character} key={character.id} />
+            <Link to={`/${character.id}`}>
+              <CardComp character={character} key={character.id} />
+            </Link>
           );
         })}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 }
