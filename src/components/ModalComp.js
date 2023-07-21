@@ -1,10 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 export function ModalComp(props) {
   return (
     <Modal
+      // show={props.show}
+      // onHide={props.handleClose}
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -32,7 +34,12 @@ export function ModalComp(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button variant="secondary" onClick={props.onHide}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={props.onHide}>
+          Save Changes
+        </Button>
       </Modal.Footer>
     </Modal>
   );

@@ -9,14 +9,18 @@ import { ModalComp } from "../components/ModalComp";
 export default function Character() {
   const { id } = useParams();
   const { loading, error, data } = useCharacter(id);
-  const [modalShow, setModalShow] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   console.log(loading, error, data);
 
   if (loading)
     return (
       <Container fluid>
-        <div class="position-absolute top-50 start-50 translate-middle">
+        <div className="position-absolute top-50 start-50 translate-middle">
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
           </Spinner>
@@ -26,7 +30,7 @@ export default function Character() {
 
   if (error)
     return (
-      <div class="position-absolute top-50 start-50 translate-middle">
+      <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="text-danger">Error</h1>
       </div>
     );
@@ -45,11 +49,11 @@ export default function Character() {
           />
         </div>
         <div className="row">
-          <Button variant="primary" onClick={() => setModalShow(true)}>
+          <Button variant="primary" onClick={handleShow}>
             Launch vertically centered modal
           </Button>
 
-          <ModalComp show={modalShow} onHide={() => setModalShow(false)} />
+          <ModalComp show={show} onHide={handleClose} />
         </div>
       </div>
       <div className="col">
