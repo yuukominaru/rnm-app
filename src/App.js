@@ -1,12 +1,19 @@
 import "./App.css";
-import { Navbar } from "./components/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+import { NavbarComp } from "./components/NavbarComp";
 import CharactersList from "./pages/CharactersList";
+import Character from "./pages/Character";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <CharactersList />
+      <NavbarComp />
+      <Routes>
+        <Route path="/" element={<CharactersList />} />
+        <Route path="/:id" element={<Character />} />
+      </Routes>
+      {/* <CharactersList /> */}
     </div>
   );
 }
