@@ -50,7 +50,7 @@ export default function Character() {
         </div>
         <div className="row">
           <Button variant="primary" onClick={handleShow}>
-            Launch vertically centered modal
+            Add Location
           </Button>
 
           <ModalComp show={show} onHide={handleClose} />

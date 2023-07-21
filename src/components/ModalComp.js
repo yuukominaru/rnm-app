@@ -5,8 +5,6 @@ import Form from "react-bootstrap/Form";
 export function ModalComp(props) {
   return (
     <Modal
-      // show={props.show}
-      // onHide={props.handleClose}
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -37,7 +35,7 @@ export function ModalComp(props) {
         <Button variant="secondary" onClick={props.onHide}>
           Close
         </Button>
-        <Button variant="primary" onClick={props.onHide}>
+        <Button variant="primary" type="submit" onClick={props.onHide}>
           Save Changes
         </Button>
       </Modal.Footer>
