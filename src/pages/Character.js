@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { useCharacter } from "../hooks/useCharacter";
 import { useParams } from "react-router";
+import { ModalComp } from "../components/ModalComp";
 
 export default function Character() {
   const { id } = useParams();
   const { loading, error, data } = useCharacter(id);
+  const [modalShow, setModalShow] = useState(false);
 
   console.log(loading, error, data);
 
@@ -30,13 +32,24 @@ export default function Character() {
     );
 
   return (
-    <div className="Character container m-5 mx-auto row justify-content-center" key={data.character.id}>
+    <div
+      className="Character container m-5 mx-auto row justify-content-center"
+      key={data.character.id}
+    >
       <div className="col text-center">
         <div className="row">
-          <img src={data.character.image} className="img-fluid" alt={data.character.name} />
+          <img
+            src={data.character.image}
+            className="img-fluid"
+            alt={data.character.name}
+          />
         </div>
         <div className="row">
-          <Button variant="primary">Primary</Button>
+          <Button variant="primary" onClick={() => setModalShow(true)}>
+            Launch vertically centered modal
+          </Button>
+
+          <ModalComp show={modalShow} onHide={() => setModalShow(false)} />
         </div>
       </div>
       <div className="col">
