@@ -14,7 +14,7 @@ export default function CharactersList() {
   if (loading)
     return (
       <Container fluid>
-        <div class="position-absolute top-50 start-50 translate-middle">
+        <div className="position-absolute top-50 start-50 translate-middle">
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
           </Spinner>
@@ -23,7 +23,7 @@ export default function CharactersList() {
     );
 
   if (error) return (
-    <div class="position-absolute top-50 start-50 translate-middle">
+    <div className="position-absolute top-50 start-50 translate-middle">
       <h1 className="text-danger">Error</h1>
     </div>
   );
@@ -33,8 +33,8 @@ export default function CharactersList() {
       <Row xs="1" md="3" lg="4">
         {data.characters.results.map((character) => {
           return (
-            <Link to={`/${character.id}`}>
-              <CardComp character={character} key={character.id} />
+            <Link to={`/${character.id}`} key={character.id}>
+              <CardComp character={character} />
             </Link>
           );
         })}
