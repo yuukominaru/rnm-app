@@ -30,10 +30,10 @@ export default function CharactersList() {
 
   return (
     <Container className="CharacterList">
-      <Row xs="1" md="3" lg="4">
+      <Row sm="1" md="3" lg="4">
         {data.characters.results.map((character) => {
           return (
-            <Link to={`/${character.id}`} key={character.id}>
+            <Link style={{textDecoration: 'none'}} to={`/${character.id}`} key={character.id}>
               <CardComp character={character} />
             </Link>
           );
