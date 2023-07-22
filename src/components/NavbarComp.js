@@ -12,8 +12,8 @@ export const NavbarComp = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-              <Nav.Link as={Link} to={"/"}>Character List</Nav.Link>
-              <Nav.Link as={Link} to={"/location"}>Character by Location</Nav.Link>
+              <Nav.Link as={Link} to={"/"} className={({ isActive }) => "underline" + isActive ? " active" : ""}>Character List</Nav.Link>
+              <Nav.Link as={Link} to={"/location"} className={({ isActive }) => "underline" + isActive ? " active" : ""}>Character by Location</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
