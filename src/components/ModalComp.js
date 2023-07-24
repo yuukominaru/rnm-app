@@ -4,7 +4,11 @@ import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 
 export function ModalComp(props) {
-  const [charaLocation, setCharaLocation] = useState([]);
+  // const [charaLocation, setCharaLocation] = useState([]);
+  const [charaLocation, setCharaLocation] = useState(() => {
+    return JSON.parse(localStorage.getItem("charaLocation") || []);
+  });
+
   const [location, setLocation] = useState("");
 
   const id = props.character.id;
@@ -22,15 +26,12 @@ export function ModalComp(props) {
     };
 
     setCharaLocation([...charaLocation, data]);
-    // setLocation("");
+    setLocation("");
   };
 
   useEffect(() => {
     localStorage.setItem("charaLocation", JSON.stringify(charaLocation));
   }, [charaLocation]);
-
-  console.log("location variable:" + location);
-  console.log("charaLocation: " + charaLocation);
 
   return (
     <Modal

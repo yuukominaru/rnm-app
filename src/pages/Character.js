@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -17,15 +17,10 @@ export default function Character() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const [charaLocation, setCharaLocation] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('charaLocation') || [])
-  // })
+  const charaLocation = JSON.parse(localStorage.getItem("charaLocation"));
+  const storageLength = localStorage.getItem('charaLocation').length;
 
-  // useEffect(() => {
-  //   localStorage.getItem("charaLocation", JSON.stringify(charaLocation));
-  // }, [charaLocation]);
-
-  // console.log("storage: " + charaLocation);
+  console.log("charalocation: " + charaLocation);
 
   if (loading)
     return (
@@ -55,25 +50,24 @@ export default function Character() {
             </Row>
 
             <Row className="p-3">
-              {/* {storageLength === 0 && (
-                <> */}
-              <Button variant="primary" onClick={handleShow}>
-                Add Location
-              </Button>
+              {charaLocation === null && (
+                <>
+                  <Button variant="primary" onClick={handleShow}>
+                    Add Location
+                  </Button>
 
-              <ModalComp
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-                character={data.character}
-                // location={setCharaLocation}
-              />
+                  <ModalComp
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                    character={data.character}
+                  />
 
-              {/* <div>{storage}</div> */}
-              {/* </>
+                  <div>{}</div>
+                </>
               )}
-              {storageLength > 0 && <></>} */}
+              {charaLocation > 1 && <div>Test</div>}
             </Row>
           </Col>
           <Col sm md>
