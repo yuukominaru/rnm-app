@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -12,13 +12,20 @@ import { ModalComp } from "../components/ModalComp";
 export default function Character() {
   const { id } = useParams();
   const { loading, error, data } = useCharacter(id);
-  // const [modalShow, setModalShow] = useState(false);
-  const [show, setShow] = useState(false);
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(loading, error, data);
+  // const [charaLocation, setCharaLocation] = useState(() => {
+  //   return JSON.parse(localStorage.getItem('charaLocation') || [])
+  // })
+
+  // useEffect(() => {
+  //   localStorage.getItem("charaLocation", JSON.stringify(charaLocation));
+  // }, [charaLocation]);
+
+  // console.log("storage: " + charaLocation);
 
   if (loading)
     return (
@@ -40,7 +47,7 @@ export default function Character() {
 
   return (
     <>
-      <Container className="Character mt-3" key={data.character.id}>
+      <Container className="Character mt-3">
         <Row>
           <Col sm md>
             <Row>
@@ -48,11 +55,25 @@ export default function Character() {
             </Row>
 
             <Row className="p-3">
+              {/* {storageLength === 0 && (
+                <> */}
               <Button variant="primary" onClick={handleShow}>
                 Add Location
               </Button>
 
-              <ModalComp show={show} onHide={handleClose} />
+              <ModalComp
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                character={data.character}
+                // location={setCharaLocation}
+              />
+
+              {/* <div>{storage}</div> */}
+              {/* </>
+              )}
+              {storageLength > 0 && <></>} */}
             </Row>
           </Col>
           <Col sm md>
@@ -71,7 +92,10 @@ export default function Character() {
                 {data.character.episode.map((episode) => {
                   return (
                     <li>
-                      <b><i>{episode.name}</i></b> - {episode.episode}
+                      <b>
+                        <i>{episode.name}</i>
+                      </b>{" "}
+                      - {episode.episode}
                       <br></br>
                       {episode.air_date}
                     </li>

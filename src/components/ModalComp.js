@@ -1,8 +1,37 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { useEffect, useState } from "react";
 
 export function ModalComp(props) {
+  const [charaLocation, setCharaLocation] = useState([]);
+  const [location, setLocation] = useState("");
+
+  const id = props.character.id;
+  const name = props.character.name;
+  const image = props.character.image;
+
+  const addLocationSubmit = (e) => {
+    e.preventDefault();
+
+    let data = {
+      id,
+      name,
+      image,
+      location,
+    };
+
+    setCharaLocation([...charaLocation, data]);
+    // setLocation("");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("charaLocation", JSON.stringify(charaLocation));
+  }, [charaLocation]);
+
+  console.log("location variable:" + location);
+  console.log("charaLocation: " + charaLocation);
+
   return (
     <Modal
       {...props}
@@ -16,22 +45,32 @@ export function ModalComp(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
+        <Form onSubmit={addLocationSubmit} id="locationForm">
+          <Form.Group className="mb-3" controlId="formAddLocation">
+            <Form.Label>
+              Add your desired location for this character
+            </Form.Label>
             <Form.Control
-              type="email"
-              placeholder="name@example.com"
+              type="text"
+              required
               autoFocus
+              onChange={(e) => setLocation(e.target.value)}
+              value={location}
             />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.onHide}>
+        <Button variant="danger" onClick={props.onHide}>
           Close
         </Button>
-        <Button variant="primary" type="submit" onClick={props.onHide}>
+
+        <Button
+          variant="success"
+          type="submit"
+          form="locationForm"
+          onClick={props.onHide}
+        >
           Save Changes
         </Button>
       </Modal.Footer>
