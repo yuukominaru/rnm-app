@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -17,10 +17,15 @@ export default function Character() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const charaLocation = JSON.parse(localStorage.getItem("charaLocation"));
-  const storageLength = localStorage.getItem('charaLocation').length;
+  const storage = JSON.parse(localStorage.getItem("charaLocation") || []);
+  
+  for (let i = 0; i < storage.length; i++) {
+    if (storage[i].id === id) {
+      var selectedStorage = storage[i];
+    }
+  }
 
-  console.log("charalocation: " + charaLocation);
+  console.log(selectedStorage);
 
   if (loading)
     return (
@@ -49,9 +54,9 @@ export default function Character() {
               <Image src={data.character.image} fluid />
             </Row>
 
-            <Row className="p-3">
-              {charaLocation === null && (
-                <>
+            {selectedStorage === undefined && (
+              <>
+                <Row className="p-3">
                   <Button variant="primary" onClick={handleShow}>
                     Add Location
                   </Button>
@@ -63,15 +68,25 @@ export default function Character() {
                     keyboard={false}
                     character={data.character}
                   />
+                </Row>
+              </>
+            )}
 
-                  <div>{}</div>
-                </>
-              )}
-              {charaLocation > 1 && <div>Test</div>}
-            </Row>
+            {selectedStorage && (
+              <>
+                <Row className="mt-2 mb-4">
+                  <h5 style={{ fontWeight: "400", display: "inline" }}>
+                    Current location:{" "}
+                  </h5>
+                  <h3 style={{ display: "inline" }}>
+                    {selectedStorage.location}
+                  </h3>
+                </Row>
+              </>
+            )}
           </Col>
           <Col sm md>
-            <h2>{data.character.name}</h2>
+            <h1>{data.character.name}</h1>
             <div>
               <b>Status:</b> {data.character.status}
               <br></br>

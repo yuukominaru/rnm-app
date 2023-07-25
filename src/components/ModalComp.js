@@ -70,7 +70,7 @@ export function ModalComp(props) {
           variant="success"
           type="submit"
           form="locationForm"
-          onClick={props.onHide}
+          onClick={() => window.location.reload(false)}
         >
           Save Changes
         </Button>
