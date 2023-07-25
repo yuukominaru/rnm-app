@@ -18,7 +18,6 @@ export default function Character() {
   const handleShow = () => setShow(true);
 
   const storage = JSON.parse(localStorage.getItem("charaLocation") || []);
-  
   for (let i = 0; i < storage.length; i++) {
     if (storage[i].id === id) {
       var selectedStorage = storage[i];
