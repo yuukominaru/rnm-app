@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { NavbarComp } from "./components/NavbarComp";
 import CharactersList from "./pages/CharactersList";
 import Character from "./pages/Character";
+import Location from "./pages/Location";
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<CharactersList />} />
         <Route path="/:id" element={<Character />} />
+        <Route path="/location" element={<Location />} />
       </Routes>
-      {/* <CharactersList /> */}
     </div>
   );
 }
