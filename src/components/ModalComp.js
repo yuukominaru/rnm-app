@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 
 export function ModalComp(props) {
-  // const [charaLocation, setCharaLocation] = useState([]);
   const [charaLocation, setCharaLocation] = useState(() => {
     return JSON.parse(localStorage.getItem("charaLocation") || []);
   });
