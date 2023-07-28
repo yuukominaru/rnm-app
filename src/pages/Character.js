@@ -74,7 +74,7 @@ export default function Character() {
             {selectedStorage && (
               <>
                 <Row className="mt-2 mb-4">
-                  <h5 style={{ fontWeight: "400", display: "inline" }}>
+                  <h5 style={{ display: "inline" }}>
                     Current location:{" "}
                   </h5>
                   <h3 style={{ display: "inline" }}>

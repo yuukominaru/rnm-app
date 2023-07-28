@@ -30,7 +30,7 @@ export default function CharactersList() {
 
   return (
     <Container className="CharacterList">
-      <Row sm="1" md="3" lg="4">
+      <Row xs="1" sm="2" md="3" lg="4">
         {data.characters.results.map((character) => {
           return (
             <Link style={{textDecoration: 'none'}} to={`/${character.id}`} key={character.id}>

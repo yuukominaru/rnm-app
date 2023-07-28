@@ -1,3 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --primary: #40b5cb;
+  --secondary: #c0df40;
+}
+
+body {
+  background: var(--primary) !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700 !important;
+}
+
+h5 {
+  font-weight: 600;
+}
+
+.card-title {
+  font-weight: 700;
+}
+
+.navbar {
+  background: var(--secondary) !important;
+}
+
+.navbar-brand {
+  font-weight: 600;
+}
+
 .img-fluid {
   width: 30rem;
 }
