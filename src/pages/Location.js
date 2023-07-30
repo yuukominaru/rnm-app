@@ -2,7 +2,7 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { CardComp } from "../components/CardComp";
+import { LocCardComp } from "../components/LocCardComp";
 
 export default function Location() {
   const storage = JSON.parse(localStorage.getItem("charaLocation") || []);
@@ -27,7 +27,7 @@ export default function Location() {
                 to={`/${data.id}`}
                 key={data.id}
               >
-                <CardComp character={data} />
+                <LocCardComp character={data} />
               </Link>
             );
           })}
