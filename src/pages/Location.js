@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 import { LocCardComp } from "../components/LocCardComp";
 
 export default function Location() {
+  if (localStorage.length === 0) {
+    localStorage.setItem("charaLocation", JSON.stringify([]));
+  }
+
   const storage = JSON.parse(localStorage.getItem("charaLocation") || []);
   console.log(storage);
 

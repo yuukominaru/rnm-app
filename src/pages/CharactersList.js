@@ -8,8 +8,11 @@ import { Link } from "react-router-dom";
 
 export default function CharactersList() {
   const { error, loading, data } = useCharacters();
-
   console.log({ error, loading, data });
+
+  if (localStorage.length === 0) {
+    localStorage.setItem("charaLocation", JSON.stringify([]));
+  }
 
   if (loading)
     return (
