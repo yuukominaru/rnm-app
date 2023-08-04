@@ -25,6 +25,7 @@ export default function Character() {
   }
 
   console.log(selectedStorage);
+  console.log(data);
 
   if (loading)
     return (
@@ -90,6 +91,8 @@ export default function Character() {
               <b>Status:</b> {data.character.status}
               <br></br>
               <b>Species:</b> {data.character.species}
+              <br></br>
+              <b>Type:</b> {data.character.type === "" ? "unknown" : data.character.type}
               <br></br>
               <b>Gender:</b> {data.character.gender}
               <br></br>
